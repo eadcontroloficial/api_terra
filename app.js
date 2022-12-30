@@ -3,7 +3,11 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-const port = 3000;
+const http = require('http');
+const port = process.env.PORT || 3000;
+const server = http.createServer(app);
+const { chromium } = require('playwright');
+
 // Where we will keep books
 let id = [];
 
@@ -19,10 +23,9 @@ app.get('/id/:isbn', (req, res) => {
     
 
 (async () => {
-    const browser = await playwright['chromium'].launch({
-      headless: false
-    });
-  
+  const browser = await playwright.chromium.launch({
+    headless: false // set this to true
+});
     // New Context
     const context = await browser.newContext();
   
@@ -46,9 +49,10 @@ app.get('/id/:isbn', (req, res) => {
     // const novaguia = await context.newPage();
     console.log("Estou indo para api")
     await page.goto(`https://beta-doterra.myvoffice.com/index.cfm?Fuseaction=evo_Modules.Placements&FuseSubAction=GetName&DistID=${isbn}`);
-    const pageText = await page.innerText('body')
+    const pageText = await page.innerText('body');
     res.send(pageText);
-    console.log(pageText)
+    page.close()
+
   
     
   })();
@@ -64,7 +68,11 @@ app.get('/id/:isbn', (req, res) => {
 
 
 
-app.listen(port, () => console.log(`Hello world app listening on port ${port}!`));
+
+
+server.listen(port, function() {
+  console.log('App running on *: ' + port);
+});
 
 
 
