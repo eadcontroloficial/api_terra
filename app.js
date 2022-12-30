@@ -10,6 +10,26 @@ const { Builder, By, Key, until, Browser } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 const chromedriver = require('chromedriver');
 const chromeService = new chrome.ServiceBuilder(chromedriver.path);
+const { exec } = require("child_process");
+
+exec("apt-get update -y",
+(error, stdout, stderr) => {
+  console.dir(`Result ${stdout}`);
+});
+exec("apt-get install -y",
+(error, stdout, stderr) => {
+  console.dir(`Result ${stdout}`);
+});
+exec("wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb",
+(error, stdout, stderr) => {
+  console.dir(`Result ${stdout}`);
+});
+exec("apt install -y ./google-chrome-stable_current_amd64.deb",
+(error, stdout, stderr) => {
+  console.dir(`Result ${stdout}`);
+});
+
+
 const config = [
     "--headless",
     "--whitelisted-ips",
