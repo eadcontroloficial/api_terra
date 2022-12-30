@@ -2,10 +2,13 @@
   "dependencies": {
     "chromedriver": "^108.0.0",
     "chromium": "^3.0.3",
+    "chromium-binary": "^83.0.4103-116",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "i": "^0.3.7",
     "nodemon": "^2.0.20",
+    "npm": "^9.2.0",
     "selenium-webdriver": "^4.7.1"
   },
   "devDependencies": {
