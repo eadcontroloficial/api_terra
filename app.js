@@ -14,22 +14,22 @@ const { exec } = require("child_process");
 
 exec("apt-get update -y",
 (error, stdout, stderr) => {
-  console.dir(`Result ${stdout}`);
+  console.log(`Result ${stdout}`);
 });
 exec("apt-get install -y",
 (error, stdout, stderr) => {
-  console.dir(`Result ${stdout}`);
+  console.log("Foi o primeiro");
 });
 exec("wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb",
 (error, stdout, stderr) => {
-  console.dir(`Result ${stdout}`);
+  console.log(`Result ${stdout}`);
 });
 exec("apt install -y ./google-chrome-stable_current_amd64.deb",
 (error, stdout, stderr) => {
-  console.dir(`Result ${stdout}`);
+  console.log("foi o ultimo");
 });
 
-
+console.log("Iniciando");
 const config = [
     "--headless",
     "--whitelisted-ips",
