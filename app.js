@@ -24,7 +24,7 @@ app.get('/id/:isbn', (req, res) => {
 
 (async () => {
   const browser = await playwright.chromium.launch({
-    headless: false // set this to true
+    headless: true // set this to true
 });
     // New Context
     const context = await browser.newContext();
