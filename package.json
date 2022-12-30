@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "child_process": "^1.0.2",
     "chromedriver": "^108.0.0",
     "chromium": "^3.0.3",
     "chromium-binary": "^83.0.4103-116",
